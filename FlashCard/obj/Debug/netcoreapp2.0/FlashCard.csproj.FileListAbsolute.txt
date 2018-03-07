@@ -1,0 +1,11 @@
+C:\Users\Huyen VU\Documents\Work Place\MyWebsite\FlashCard\BackEnd\FlashCard\FlashCard\bin\Debug\netcoreapp2.0\FlashCard.deps.json
+C:\Users\Huyen VU\Documents\Work Place\MyWebsite\FlashCard\BackEnd\FlashCard\FlashCard\bin\Debug\netcoreapp2.0\FlashCard.runtimeconfig.json
+C:\Users\Huyen VU\Documents\Work Place\MyWebsite\FlashCard\BackEnd\FlashCard\FlashCard\bin\Debug\netcoreapp2.0\FlashCard.runtimeconfig.dev.json
+C:\Users\Huyen VU\Documents\Work Place\MyWebsite\FlashCard\BackEnd\FlashCard\FlashCard\bin\Debug\netcoreapp2.0\FlashCard.dll
+C:\Users\Huyen VU\Documents\Work Place\MyWebsite\FlashCard\BackEnd\FlashCard\FlashCard\bin\Debug\netcoreapp2.0\FlashCard.pdb
+C:\Users\Huyen VU\Documents\Work Place\MyWebsite\FlashCard\BackEnd\FlashCard\FlashCard\obj\Debug\netcoreapp2.0\FlashCard.csprojResolveAssemblyReference.cache
+C:\Users\Huyen VU\Documents\Work Place\MyWebsite\FlashCard\BackEnd\FlashCard\FlashCard\obj\Debug\netcoreapp2.0\FlashCard.csproj.CoreCompileInputs.cache
+C:\Users\Huyen VU\Documents\Work Place\MyWebsite\FlashCard\BackEnd\FlashCard\FlashCard\obj\Debug\netcoreapp2.0\FlashCard.AssemblyInfoInputs.cache
+C:\Users\Huyen VU\Documents\Work Place\MyWebsite\FlashCard\BackEnd\FlashCard\FlashCard\obj\Debug\netcoreapp2.0\FlashCard.AssemblyInfo.cs
+C:\Users\Huyen VU\Documents\Work Place\MyWebsite\FlashCard\BackEnd\FlashCard\FlashCard\obj\Debug\netcoreapp2.0\FlashCard.dll
+C:\Users\Huyen VU\Documents\Work Place\MyWebsite\FlashCard\BackEnd\FlashCard\FlashCard\obj\Debug\netcoreapp2.0\FlashCard.pdb
