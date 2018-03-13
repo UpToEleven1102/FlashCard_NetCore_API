@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using FlashCard.Models;
@@ -35,6 +36,10 @@ namespace FlashCard.Controllers
 
         [HttpPost]
         public async Task<IActionResult> RegisterAccount([FromBody]RegisterCredentials credentials) {
+            if (!credentials.Password.Equals(credentials.RePassword)) {
+                return BadRequest(new List<IdentityError>() { new IdentityError() { Description= "Passwords are not the same!"} });
+            }
+
             var user = new CustomIdentityUser() { First = credentials.First, Last = credentials.Last, UserName = credentials.Email, Email = credentials.Email };
 
             var result = await userManager.CreateAsync(user, credentials.Password);
@@ -54,18 +59,19 @@ namespace FlashCard.Controllers
             
             var result = await signInManager.PasswordSignInAsync(credentials.Email, credentials.Password, false, false);
             if (!result.Succeeded) {
-                return BadRequest(new List<IdentityError>() { new IdentityError() { Description = "Login failed " } });
+                return BadRequest(new List<IdentityError>() { new IdentityError() { Description = "Login failed" } });
             }
             var user = await userManager.FindByEmailAsync(credentials.Email);
             return Ok(CreateToken(user));
         }
 
         public string CreateToken(CustomIdentityUser user) {
-
             var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.GetSection("Authentication:SecretKey").Value));
             var signingCredential = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
-
-            var jwt = new JwtSecurityToken(signingCredentials: signingCredential);
+            var claims = new Claim[] {
+                new Claim(JwtRegisteredClaimNames.Sub, user.Id)
+            };
+            var jwt = new JwtSecurityToken(signingCredentials: signingCredential, claims: claims);
             return new JwtSecurityTokenHandler().WriteToken(jwt);
         }
     }

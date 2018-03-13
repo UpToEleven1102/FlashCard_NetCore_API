@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FlashCard.Infrastructures;
 using FlashCard.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FlashCard.Controllers
 {
     [Produces("application/json")]
     [Route("api/CardSets")]
+    [Authorize]
     public class CardSetsController : Controller
     {
         private readonly FlashCardContext _context;
@@ -25,7 +27,8 @@ namespace FlashCard.Controllers
         [HttpGet]
         public IEnumerable<CardSetEntity> GetCardSetEntity()
         {
-            return _context.CardSetEntity;
+            var userId = HttpContext.User.Claims.First().Value;
+            return _context.CardSetEntity.Where(set => set.OwnerId.Equals(userId)) ;
         }
 
         // GET: api/CardSet/5
@@ -78,7 +81,6 @@ namespace FlashCard.Controllers
                     throw;
                 }
             }
-
             return NoContent();
         }
 
@@ -91,6 +93,8 @@ namespace FlashCard.Controllers
                 return BadRequest(ModelState);
             }
 
+            var userId = HttpContext.User.Claims.First().Value;
+            cardSetEntity.OwnerId = userId;
             _context.CardSetEntity.Add(cardSetEntity);
             await _context.SaveChangesAsync();
 
